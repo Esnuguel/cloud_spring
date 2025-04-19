@@ -1,12 +1,16 @@
-# Etapa 1: Compilar con Maven
-FROM maven:3.9.4-eclipse-temurin-17 as build
-WORKDIR /app
-COPY . .
-RUN mvn clean package -DskipTests
-
-# Etapa 2: Ejecutar el .jar
+# Imagen base con Java
 FROM openjdk:17-jdk-slim
+
+# Directorio de trabajo en el contenedor
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
-EXPOSE 8081
+
+# Copiar el .jar generado
+COPY target/cloud-0.0.1-SNAPSHOT.jar app.jar
+
+# Puerto que expondrá la app (opcional)
+EXPOSE 8080
+
+# Comando para ejecutar
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
+#plaintland = pasos automatizados con git hub
