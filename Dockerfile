@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/cloud-0.0.1-SNAPSHOT.jar app.jar
 
 # Puerto que expondrá la app (opcional)
-EXPOSE 8081
+EXPOSE 8080
 
 # Comando para ejecutar
 ENTRYPOINT ["java", "-jar", "app.jar"]
