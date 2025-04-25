@@ -28,6 +28,8 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<springCloudVersion>2024.0.1</springCloudVersion> <!-- o la versión que uses -->
+    	<springCloudGcpVersion>6.1.1</springCloudGcpVersion>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -37,6 +39,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>spring-cloud-gcp-starter-data-firestore</artifactId>
 		</dependency>
 
 		<dependency>
@@ -61,6 +67,25 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>spring-cloud-gcp-dependencies</artifactId>
+            <version>${springCloudGcpVersion}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>${springCloudVersion}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
 
 	<build>
 		<plugins>
